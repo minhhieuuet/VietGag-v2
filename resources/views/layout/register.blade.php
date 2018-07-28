@@ -19,7 +19,7 @@
                 </div>
                 </div>
                 <script>
-                  setTimeout(()=>{$('.alert-success').slideUp();},1000);
+                  setTimeout(()=>{$('.alert-success').slideUp();},3000);
                   
                 </script>
                 @endif

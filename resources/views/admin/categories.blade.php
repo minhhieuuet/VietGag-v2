@@ -1,6 +1,7 @@
 @extends('admin.parent')
 @section('content')
 <script >
+
   $(document).ready(function(){
     $('.editBtn').click(function(){
     	let id=$(this).attr('idCate');
@@ -17,6 +18,7 @@
     	});
     })
   })
+  // Script ajax load edit content from server
 </script>
 <?php $count=1 ?>
   <div class="content">

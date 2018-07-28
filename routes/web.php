@@ -19,7 +19,7 @@
 	Route::get('post/{id}','postViewController@index');
 	Route::get('prev/{id}','postViewController@getPrev');
 	// Search
-	Route::get('search','searchController@index');
+	Route::get('search','searchController@index');	
 	// Login logout
 
 	Route::get('user/login', [ 'as' => 'login', 'uses' =>'homeController@login']);
@@ -27,7 +27,7 @@
 	Route::get('register','homeController@register');
 	Route::post('register','homeController@registerPost')->name('register');
 	Route::get('logout','HomeController@logout')->name('userLogout');
-	// Upload user
+	// User Upload 
 	Route::resource('upload','userUploadController')->middleware('auth');
 	//Comment
 	Route::resource('comment','commentController');
@@ -46,8 +46,9 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 		Route::group(['prefix'=>'table'],function(){
 		Route::resource('post','postsController');
 		Route::resource('category','categoriesController');
+		// approve user post
+		Route::resource('approve','approveController');
 		Route::get('logout',function(){
-			
 			return redirect('admin/login')->with(Auth::logout());
 		})->name('logout');
 	});

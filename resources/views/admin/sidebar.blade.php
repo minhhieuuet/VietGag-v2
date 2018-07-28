@@ -26,7 +26,7 @@
             </a>
           </li>
           
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown " id="tableItem" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
              <i class="material-icons">content_paste</i>
               <p>Danh sách bảng</p>
@@ -34,6 +34,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 88%;">
               <a class="dropdown-item" href="{{asset('admin/table/category')}}">Danh mục</a>
               <a class="dropdown-item" href="{{asset('admin/table/post')}}">Bài đăng</a>
+              <a class="dropdown-item" href="{{asset('admin/table/approve')}}">Duyệt bài</a>
               <a class="dropdown-item" href="">Bình luận</a>
             </div>
           </li>
@@ -64,7 +65,9 @@
         </ul>
       </div>
     </div>
+    <!-- Script them class active -->
   <script>
+
     var nav=document.querySelectorAll('.nav-item');
     nav=[...nav];
     nav.forEach((i)=>{
@@ -73,5 +76,12 @@
       if(i.getElementsByTagName('a')[0].href==window.location.href.split("?")[0]){
          i.classList.add("active");
       }
-    })
+
+    });
+      // Them class active cho table
+      if(window.location.href.includes(window.location.origin+'/admin/table'))
+      {
+        document.getElementById('tableItem').classList.add("active");
+      }
+      
  </script>

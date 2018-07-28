@@ -20,11 +20,11 @@ class isAdmin
                 return $next($request);    
             }
             else{
-                 return redirect('admin/login')->with('error',"Tài khoản hoặc mật khẩu không đúng!");
+                 return redirect()->back();
             }
             
          }
-         return redirect('admin/login')->with('error',"Tài khoản hoặc mật khẩu không đúng!");
+         return redirect('');
         
     }
 }

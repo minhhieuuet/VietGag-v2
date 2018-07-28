@@ -14,25 +14,46 @@
 	</script>
 <div style="margin-left: 20px;">
 	<h1><b>Đăng ảnh của bạn!!!</b><i class="fa fa-sun" style="color:yellow;"></i></h1>
-	<form>
-
+	@if($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+			    <li>{{$error}}</li>
+			    @endforeach
+			</ul>
+		</div>
+	@endif
+	@if(session('success'))
+                <div class="container-fluid">
+                <div class="alert alert-success text-center"" style="width: 100%;">
+                  <img src="{{asset('tick.png')}}" width="50px" height="50px" alt="">  {{session('success')}} 
+                </div>
+                </div>
+                <script>
+                  setTimeout(()=>{$('.alert-success').slideUp();},3000);
+                  
+                </script>
+    @endif
+	<form class="form" method="post" action="{{route('upload.store')}}"  enctype="multipart/form-data">
+		@csrf
+		<input type="hidden" name="UserId" value="{{Auth::user()->id}}">
 		<div class="form-group">
 			<label>Tiêu đề</label>
-			<input class="form-control" type="text" placeholder="Nhập tiêu đề"  required="required" name="">
+			<input class="form-control" type="text" placeholder="Nhập tiêu đề"  required="required" name="title">
 		</div>
 		<div class="form-group">
 			<label>Ảnh</label>
 			<div id="image-preview">
 			  <label for="image-upload" id="image-label">Chọn ảnh</label>
-			  <input type="file" name="image" id="image-upload" />
+			  <input type="file" name="imgInput" id="image-upload" accept="image/*" required="required" />
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label>Thể loại</label>
-			<select class="form-control">
+			<select class="form-control" name="CategoryId">
 				@foreach($categories as $category)
-				<option>{{$category['name']}}</option>
+				<option value="{{$category['id']}}">{{$category['name']}}</option>
 				@endforeach
 			</select>
 		</div>
