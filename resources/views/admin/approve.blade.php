@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h2 class="card-title ">DUYỆT BÀI</h2>
+                  <h2 class="card-title "><i class="fas fa-check-circle"></i> DUYỆT BÀI</h2>
                   
                   <p class="card-category"> Danh sách bài cần duyệt</p>
 

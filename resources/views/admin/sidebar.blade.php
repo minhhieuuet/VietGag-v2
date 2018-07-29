@@ -29,17 +29,23 @@
           <li class="nav-item dropdown " id="tableItem" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
              <i class="material-icons">content_paste</i>
-              <p>Danh sách bảng</p>
+              <p>Bảng</p>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 88%;">
               <a class="dropdown-item" href="{{asset('admin/table/category')}}">Danh mục</a>
               <a class="dropdown-item" href="{{asset('admin/table/post')}}">Bài đăng</a>
-              <a class="dropdown-item" href="{{asset('admin/table/approve')}}">Duyệt bài</a>
+              
               <a class="dropdown-item" href="">Bình luận</a>
             </div>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{asset('admin/approve')}}">
+              <i class="fas fa-check-circle"></i>
+              <p>Duyệt bài</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{asset('admin/user')}}">
               <i class="fas fa-users"></i>
               <p>Quản lý người dùng</p>
             </a>

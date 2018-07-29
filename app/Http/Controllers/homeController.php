@@ -39,7 +39,7 @@ class homeController extends Controller
             'email.required'=>'Bạn chưa nhập email',
             'pass.required'=>'Bạn chưa nhập mật khẩu'
         ]);
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->pass])){
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->pass,'active'=>1])){
             return redirect('hot');
         }
         else {
