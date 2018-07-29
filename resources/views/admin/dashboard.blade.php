@@ -47,7 +47,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <a style="color: white;" href="{{asset('admin/table/approve')}}">
+                    <a style="color: white;" href="{{asset('admin/approve')}}">
                     <i class="fas fa-check"></i>
                     </a>  
                   </div>

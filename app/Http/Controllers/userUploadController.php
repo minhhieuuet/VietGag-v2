@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 use App\userpost;
+use App\Notifications\UserNotification;
 class userUploadController extends Controller
 {
     /**
@@ -68,6 +69,9 @@ class userUploadController extends Controller
         $post->idCategory=$request->CategoryId;
         $post->UserId=$request->UserId;
         $post->save();
+        // Notification to admin
+        User::find(1)->notify(new UserNotification(User::find($request->UserId)->name.' vừa đăng bài "'.$request->title.'"'));
+
         return redirect()->back()->with('success','Đăng bài thành công! Bài đăng của bạn đang được kiểm duyệt!');
     }
 

@@ -84,7 +84,7 @@ class approveController extends Controller
         $post=userpost::findorFail($id);
         $name=$post->title;
         $post->delete();
-        return redirect()->back()->with('alert','Đã xóa bài đăng'.$name);
+        return redirect()->back()->with('alert','Đã xóa bài đăng '.$name);
     }
     // Add user post to new page
     public function accept($id)
@@ -94,12 +94,14 @@ class approveController extends Controller
         $userpost->save();
 
         $post=new post;
+
         $post->title=$userpost->title;
+        $name=$userpost->title;
         $post->src=$userpost->src;
         $post->idCategory=$userpost->idCategory;
         $post->author=$userpost->author['name'];
         $post->save();
-        return redirect()->back()->with('alert','Đã duyệt bài viết!');
+        return redirect()->back()->with('alert','Đã duyệt bài viết '.$name);
     }
    
 }

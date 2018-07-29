@@ -30,6 +30,15 @@
   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+  {{-- Ajax Notification --}}
+  <script >
+    function ajaxMarkRead(){
+      $.get(window.location.origin+'/admin/markAsReadNotification',function(data){
+
+      });
+      $('#notificationCount').html(0);
+    }
+  </script>
 </head>
 
 <body class="">
@@ -69,19 +78,31 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" onclick="ajaxMarkRead()" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
+                  <span class="notification" id="notificationCount">{{Auth::user()->unreadnotifications->count()}}</span>
                   <p class="d-lg-none d-md-block">
                     Some Actions
                   </p>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="width: 300px;padding: 5px;">
+                  {{-- Read notification --}}
+                  @if(Auth::user()->unreadnotifications->count()!=0)
+                  <div class="dropdown-divider"></div>
+                    <b style="font-size: 15px;">MỚI</b>
+                  <div class="dropdown-divider"></div>
+                  @endif
+
+                  @foreach(Auth::user()->unreadnotifications as $notification)
+                  <div class="noti-item"  >{{$notification->data['data']}}</div>
+                  @endforeach
+                  {{-- Unread notification --}}
+                  <div class="dropdown-divider"></div>
+                    <b style="font-size: 15px;">TRƯỚC ĐÓ</b>
+                  <div class="dropdown-divider"></div>
+                  @foreach(Auth::user()->readnotifications->take(5) as $notification)
+                  <div class="noti-item"  >{{$notification->data['data']}}</div>
+                  @endforeach
                 </div>
               </li>
               <li class="nav-item">

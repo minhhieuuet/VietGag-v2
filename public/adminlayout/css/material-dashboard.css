@@ -2499,6 +2499,21 @@ tbody.collapse.show {
   margin: 0.5rem 0;
   overflow: hidden;
   border-top: 1px solid #e9ecef; }
+.noti-item{
+  display: block;
+  width: 300px;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  background-color: transparent;
+  border: 0;
+}
+.noti-item:hover, .noti-item:focus {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa; }
 
 .dropdown-item {
   display: block;

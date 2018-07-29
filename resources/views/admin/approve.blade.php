@@ -71,7 +71,7 @@
                             <div class="btn-group-vertical" role="group" >
                             @if($post['approved']==0)
                             
-                            <a href="{{asset('admin/table/accept/'.$post['id'])}}">
+                            <a href="{{asset('admin/accept/'.$post['id'])}}">
                             <button class="btn btn-success " title="Duyệt bài" ><i class="fas fa-check" style="font-size: 15px;"></i></button>
                             </a>
                             @else

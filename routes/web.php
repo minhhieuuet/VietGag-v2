@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-	
+	use App\User;
+	use App\Notifications\UserNotification;
 
-// Route::prefix('/')->group(function(){
+
+
 	Route::get('/', 'homeController@index');
 	Route::get('hot', 'homeController@index');
 	Route::get('category/{id}','homeController@category');
@@ -36,8 +38,8 @@
 
 	// ajax
 	Route::post('checkemail','homeController@emailCheck');
-// });
-
+	
+// Admin
 Route::get('admin/login','adminLoginController@index');
 Route::post('admin/login','adminLoginController@authLogin');	
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
@@ -58,9 +60,13 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 		// User
 		Route::resource('user','userListController');
 
+		// Notification
+		Route::get('markAsReadNotification',function(){
+			Auth::user()->unreadNotifications->markAsRead();
+		});
 		//Admin logout
 		Route::get('logout',function(){
-			return redirect('admin/login')->with(Auth::logout());
+			return redirect('')->with(Auth::logout());
 		})->name('logout');
 	
 
