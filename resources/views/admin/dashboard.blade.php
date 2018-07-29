@@ -7,17 +7,20 @@
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                    <a style="color: white;" href="{{asset('admin/table/category')}}">
+                    <i class="material-icons">category</i>
+                  </a>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
+                  <p class="card-category">DANH MỤC</p>
+                  <h3 class="card-title">{{$categories->count()}} mục
+                    {{-- <small>GB</small> --}}
+                 
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="#pablo">Get More Space...</a>
+                    
+                    <a href="{{asset('admin/table/category')}}">Quản lý danh mục</a>
                   </div>
                 </div>
               </div>
@@ -26,14 +29,16 @@
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <a style="color: white;" href="{{asset('admin/table/post')}}">
+                    <i class="far fa-images"></i>
+                  </a>
                   </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
+                  <p class="card-category">BÀI ĐĂNG</p>
+                  <h3 class="card-title">{{$postcount}} bài</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
+                     <i class="material-icons">date_range</i>{{$newPostCount}} bài mới trong tuần này
                   </div>
                 </div>
               </div>
@@ -42,14 +47,18 @@
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
+                    <a style="color: white;" href="{{asset('admin/table/approve')}}">
+                    <i class="fas fa-check"></i>
+                    </a>  
                   </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
+                  <p class="card-category">Chờ duyệt</p>
+                  <h3 class="card-title">{{$approvePostCount}} bài</h3>
+                  
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
+                    <i class="material-icons">date_range</i> {{$notApprovedPostCount}} bài còn lại trong 7 ngày gần đây
+
                   </div>
                 </div>
               </div>
@@ -58,14 +67,14 @@
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fas fa-users"></i>
                   </div>
-                  <p class="card-category">Followers</p>
-                  <h3 class="card-title">+245</h3>
+                  <p class="card-category">NGƯỜI DÙNG</p>
+                  <h3 class="card-title">+{{$userCount}}</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
+                    <i class="material-icons">update</i>{{$newUserCount}} mới trong 7 ngày gần đây! 
                   </div>
                 </div>
               </div>

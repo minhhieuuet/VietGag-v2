@@ -69,16 +69,19 @@
                           <td>
 
                             <div class="btn-group-vertical" role="group" >
-                            @if($post['approved']==0)	
-                            <button class="btn btn-success " data-toggle="modal" title="Duyệt bài" ><i class="fas fa-thumbs-up"></i></button>
+                            @if($post['approved']==0)
+                            
+                            <a href="{{asset('admin/table/accept/'.$post['id'])}}">
+                            <button class="btn btn-success " title="Duyệt bài" ><i class="fas fa-check" style="font-size: 15px;"></i></button>
+                            </a>
                             @else
                             <button class="btn btn-warning " disabled="disabled" title="Đã duyệt" ><i class="fas fa-check"></i> </button>
                             @endif
                             
 
-                            {{Form::open([ 'method'  => 'delete', 'route' => [ 'upload.destroy', $post->id ]])}}
+                            {{Form::open([ 'method'  => 'delete', 'route' => [ 'approve.destroy', $post->id ]])}}
                             {{ Form::hidden('id', $post->id) }}
-                              <button class="btn btn-danger " onclick="confirmDel()"><i class="fa fa-trash"></i></button>
+                              <button class="btn btn-danger " ><i class="fa fa-trash"></i></button>
                                 <!-- {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }} -->
                             {{ Form::close() }}
                           </div>

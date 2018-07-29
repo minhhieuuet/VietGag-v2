@@ -41,17 +41,26 @@
 Route::get('admin/login','adminLoginController@index');
 Route::post('admin/login','adminLoginController@authLogin');	
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
+		// Dashboard
 		Route::get('/','dashboardController@index');
+		// User profile
 		Route::resource('profile','profileController');
+		// Table list
 		Route::group(['prefix'=>'table'],function(){
 		Route::resource('post','postsController');
 		Route::resource('category','categoriesController');
 		// approve user post
 		Route::resource('approve','approveController');
+		Route::get('accept/{id}','approveController@accept');
+		
+		});
+		// 
+
+		
+		//Admin logout
 		Route::get('logout',function(){
 			return redirect('admin/login')->with(Auth::logout());
 		})->name('logout');
-	});
 	
 
 });	

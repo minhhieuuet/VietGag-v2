@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class profileController extends Controller
 {
     /**
@@ -68,7 +68,17 @@ class profileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'email|required|unique:users,email,'.$id
+        ],[
+            'email.unique'=>'Email này đã tồn tại'
+        ]);
+        $user=User::findorFail($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->save();
+        return redirect()->back()->with('alert','Cập nhật thông tin thành công!');
     }
 
     /**

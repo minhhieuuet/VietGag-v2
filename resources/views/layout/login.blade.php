@@ -9,9 +9,9 @@
         </ul>
     </div>
     @endif
-    @if(session('errorLogin'))
+    @if(session('error'))
     <div class="alert alert-danger">
-            {{session('errorLogin')}}    
+            {{session('error')}}    
         
     </div>
     @endif
@@ -23,12 +23,12 @@
             </div>
             <div class="form-group" >
                 <label>Email </label><div id="inputEmail"></div>
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" placeholder="Nhập email" id="email">
 
             </div>
             <div class="form-group">
                 <label>Mật khẩu</label>
-                <input type="password" class="form-control" name="pass">
+                <input type="password" class="form-control" name="pass" placeholder="Nhập mật khẩu">
             </div>
             <div class="form-group">
                 

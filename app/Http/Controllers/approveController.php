@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\userpost;
+use App\post;
 class approveController extends Controller
 {
     /**
@@ -24,7 +25,7 @@ class approveController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -80,6 +81,25 @@ class approveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=userpost::findorFail($id);
+        $name=$post->title;
+        $post->delete();
+        return redirect()->back()->with('alert','Đã xóa bài đăng'.$name);
     }
+    // Add user post to new page
+    public function accept($id)
+    {   
+        $userpost=userpost::findorFail($id);
+        $userpost->approved=1;
+        $userpost->save();
+
+        $post=new post;
+        $post->title=$userpost->title;
+        $post->src=$userpost->src;
+        $post->idCategory=$userpost->idCategory;
+        $post->author=$userpost->author['name'];
+        $post->save();
+        return redirect()->back()->with('alert','Đã duyệt bài viết!');
+    }
+   
 }

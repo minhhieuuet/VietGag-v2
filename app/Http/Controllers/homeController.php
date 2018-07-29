@@ -42,9 +42,8 @@ class homeController extends Controller
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->pass])){
             return redirect('hot');
         }
-        else {//Loi chinh la case nay, do anh ko xu ly
-            return redirect()->back();//The dc chua Minh?? 
-            //Tam on, anh thu lai di
+        else {
+            return redirect()->back()->with('error','Tài khoản hoặc mật khẩu không đúng');
         }
         
     }

@@ -13,4 +13,5 @@ class userpost extends Model
     public function author(){
     	return $this->belongsTo('App\User','UserId','id');
     }
+    
 }

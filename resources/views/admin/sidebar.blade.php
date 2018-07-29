@@ -22,7 +22,7 @@
           <li class="nav-item ">
             <a class="nav-link" href="{{asset('admin/profile')}}">
               <i class="material-icons">person</i>
-              <p>Thông tin người dùng</p>
+              <p>Thông tin cá nhân</p>
             </a>
           </li>
           
@@ -40,20 +40,20 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <i class="fas fa-users"></i>
+              <p>Quản lý người dùng</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
+              <p>Bản đồ</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Thông báo</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
