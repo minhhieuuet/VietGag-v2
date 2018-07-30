@@ -93,7 +93,7 @@
                             <li><a style="color: red;">Chưa có thông báo mới nào!</a></li>
                             @endif
                         @foreach(Auth::user()->unreadnotifications as $noti)
-                          <li><a >{{$noti->data['data']}}</a></li>
+                          <li><a>{{$noti->data['data']}}</a></li>
                         @endforeach
                           <hr>
                         @foreach(Auth::user()->readnotifications->take(5) as $noti)
