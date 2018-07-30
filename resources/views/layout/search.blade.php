@@ -8,17 +8,23 @@
                     <div class="panel-body">
                         <div class="page-header">
                             <h3><a href="{{asset('/post/'.$post['id'])}}" target="_blank"><strong>{{$post['title']}}</strong></a></h3>
-                            <p><small> Trong  <a style="color: #e23672;" href="{{asset('/category/'.$post->category['id'])}}" target="_blank">{{$post->category['name']}}</a></small></p>
+                            <p><small> Trong  <a style="color: #e23672;" href="{{asset('/category/'.$post->category['id'])}}" target="_blank">{{$post->category['name']}}</a></small>
+                                -
+                            <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
+                            </small>
+                            <small>
+                            {{$post->getTimeAgo(Carbon::parse($post->created_at))}}
+                            </small>
+                            </p>
+
                             <div class="crop" style="margin-bottom: 10px;">
                             <a href="{{asset('/post/'.$post['id'])}}" target="_blank">
                             <img class="gagimage" data-src="{{asset($post['src'])}}" width="100%">
                             </a>
                             </div>
-                            <div>{{$post->comments->count()}} bình luận</div>
-                            <!-- <a class="btn btn-default"><i class="fa fa-angle-up"></i></a>
-                            <a class="btn btn-default"><i class="fa fa-angle-down"></i></a>
-                            <a class="btn btn-default"><i class="fa fa-comment"></i></a>
-                            <a class="btn btn-default">°°°</a> -->
+                            <div style="color: #999;">{{$post->comments->count()}} bình luận - {{ Counter::show($post['id']) }} lượt xem</div>
+                            <div></div>
+                            
                             <div></div>
 
                             <!-- Upvore down vote -->
