@@ -17,6 +17,8 @@
 
 	Route::get('/', 'homeController@index');
 	Route::get('hot', 'homeController@index');
+
+	Route::get('new', 'homeController@new');
 	Route::get('category/{id}','homeController@category');
 	Route::get('post/{id}','postViewController@index');
 	Route::get('prev/{id}','postViewController@getPrev');

@@ -1,5 +1,7 @@
 @extends('layout.parent')
-
+@section('page-title')
+    Đăng ký
+@endsection
 @section('content')
 <script src='https://www.google.com/recaptcha/api.js'></script>
     @if ($errors->any())

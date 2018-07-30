@@ -1,12 +1,26 @@
 @extends('layout.parent')
+@section('page-title')
+	{{$post['title']}}
+@endsection
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/comment.css')}}">
 <div class="panel-body">
 	<div class="page-header">
 		<div id="menuBar">
 			<h3><strong>{{$post['title']}}</strong></h3>
-			<!-- <p><small>4,151 points · 168 comments</small></p> -->
+			Lượt xem: <b style="color: red;">{{ Counter::showAndCount($post['id']) }}</b> <i class="fa fa-eye"></i> 
+			<p>
+
+				<small> Trong  <a style="color: #e23672;" target="_blank" href="{{asset('/category/'.$post->category['id'])}}">{{$post->category['name']}}</a>
+                 </small>
+                                -
+                 <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
+                </small>
+
+                
+			</p>
 			<div>
+
 				 <div style="height: 45px;" class="fb-like" data-href="{{$post['src']}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
 				
 
@@ -100,13 +114,10 @@
 					<div class="clearfix"></div>
 				</div>
 				<div>
-					<!---->
-      <!--       <div class="notice-message">
-        <p class="align-center">Be the first to comment!</p>
-        <div class="btn-container align-center"><a href="#" class="btn">Say something nice</a></div>
-       </div> -->
+	
+
        @if($post->comments->count()>0)
-       @foreach($post->comments as $comment)
+       @foreach($comments as $comment)
        <div>
        	<div class="comment-entry">
        		<div class="avatar">
@@ -116,7 +127,7 @@
        			<div class="info">
        				<p><a href="#" target="_blank" class="username">{{$comment->user['name']}}</a>
        					<!---->
-       					<!----><span class="meta"><!----> <span><span class="points">13 points</span> <span> · </span></span>
+       					<!----><span class="meta"><!----> <span><span class="points">{{$comment->created_at}}</span> <span> · </span></span>
        				</p>
        			</div>
        			<div class="content">{{$comment['content']}}</div>

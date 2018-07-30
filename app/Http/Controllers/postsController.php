@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\post;
 use App\category;
-
+use Illuminate\Support\Facades\Auth;
 class postsController extends Controller
 {
     /**
@@ -58,7 +58,7 @@ class postsController extends Controller
         else{
             $post->src='';
         }
-        $post->author=$request->author;
+        $post->AuthorId=Auth::user()->id;
         $post->save();
         return redirect()->back()->with('alert','Thêm bài đăng thành công');
     }
@@ -98,7 +98,7 @@ class postsController extends Controller
         $post=post::findOrFail($request->id);
         $post->title=$request->title;
         $post->idCategory=$request->selectCate;
-        $post->author=$request->author;
+        
          if($request->hasFile('imgInput')){
             if($request->file('imgInput')->isValid()){
                 $file=$request->file('imgInput');

@@ -163,6 +163,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
     ],
 
     /*
@@ -215,6 +218,7 @@ return [
         'Html' =>   Collective\Html\HtmlFacade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,  
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
     ],
 
 ];

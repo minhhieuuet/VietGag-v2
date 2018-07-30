@@ -13,6 +13,10 @@ class homeController extends Controller
         
         return view('layout.index',compact('posts'));
     }
+    function new(){
+        $posts=post::orderBy('id',"DESC")->paginate(15);
+        return view('layout.index',compact('posts'));
+    }
     function category($id){
         $category=category::findOrFail($id);
         

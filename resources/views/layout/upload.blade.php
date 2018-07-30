@@ -1,5 +1,7 @@
 @extends('layout.parent')
-
+@section('page-title')
+	Đăng bài
+@endsection
 @section('content')
 
 	<script type="text/javascript" src="{{asset('js/jquery.uploadPreview.min.js')}}"></script>

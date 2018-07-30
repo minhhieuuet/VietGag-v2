@@ -1,4 +1,7 @@
 @extends('layout.parent')
+@section('page-title')
+    Đăng nhập
+@endsection
 @section('content')
     @if ($errors->any())
     <div class="alert alert-danger">

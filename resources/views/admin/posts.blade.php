@@ -222,12 +222,7 @@
                           </div>
                         
                         
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="bmd-label-floating">Tác giả</label>
-                              <input type="text" class="form-control" name="author" id="author" value="Admin">
-                            </div>
-                          </div>
+                            
                     
                         </div>
                       
@@ -303,13 +298,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label class="bmd-label-floating">Tác giả</label>
-                              <input type="text" class="form-control" name="author" value="Admin">
-                            </div>
-                          </div>
+                        
                          
                         </div>
                        

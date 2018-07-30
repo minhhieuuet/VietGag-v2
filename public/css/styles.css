@@ -1127,3 +1127,31 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     white-space: normal;
 }
+.top-user-table{
+    background-color: #DEDEDE;
+    text-shadow: 0 1px #EEE;
+
+    padding: 5px;
+    box-shadow: 0 0 3px #888;
+    -moz-box-shadow: 0 0 3px #888;
+    -webkit-box-shadow: 0 0 3px #888;
+    position: fixed;
+    width: 300px;
+}
+
+.topUsers {
+    background: url(../images/smile_icon.png) no-repeat transparent;
+    padding-left: 22px;
+    float: left;
+
+  }
+
+ul.topUsersSort li {
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+    font-size: 13px;
+    font-style: italic;
+    list-style: none;
+    margin: 0;
+}

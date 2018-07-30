@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vietgag </title>
+    <title> @yield('page-title') </title>
     <meta charset=utf-8>
     <meta name=description content="">
     <meta name=viewport content="width=device-width, initial-scale=1">
@@ -83,9 +83,14 @@
                     {{-- Notification --}}
                     {{-- <li><a style="color: white;" href=""><i class="fas fa-bell"></i></a></li> --}}
                     <li class="dropdown" onclick="markReadNoti()">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i style="font-size: 20px;" class="fa fa-bell"></i>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            @if(Auth::user()->unreadnotifications->count()==0)
+                            <i style="font-size: 20px;" class="fa fa-bell"></i>
+                            @else
+                            <i style="font-size: 20px;color: white;" class="fa fa-bell"></i>
+                            @endif
                         @if(Auth::user()->unreadnotifications->count()>0)
-                        <badge style="color: red;font-weight: bold;"><b id="unread-noti-count">{{Auth::user()->unreadnotifications->count()}}</b></badge>
+                        <badge style="color: white;padding:0px 3px 0px 3px;background-color: red;border-radius: 60px;"><b id="unread-noti-count">{{Auth::user()->unreadnotifications->count()}}</b></badge>
                         @endif
 
                         <ul class="dropdown-menu notification-box" >
@@ -107,6 +112,8 @@
                     @endif
                     @endif
                     @if(Auth::check())
+
+
                     <li><img id="smallAvatar" src="{{asset(Auth::user()->avatar)}}" alt=""></li>
                     <li><a style="color: white;" href=""> {{Auth::user()->name}}</a></li>
                     
@@ -117,7 +124,7 @@
                     <li><button class="btn btn-info" style="margin-top: 7px;background-color: red;font-weight: bold;color: white;"><a title="Đăng xuất" href="{{route('userLogout')}}" style="color: white;"><i class="fas fa-power-off"></i></a></button></li>
                     
                     @else
-                    <li><button class="btn btn-info" style="margin-top: 7px;background-color: #09f;font-weight: bold;" data-toggle="modal" data-target="#myModal">Đăng ký</button></li>
+                    <li><button class="btn btn-info" style="margin-top: 7px;background-color: #09f;font-weight: bold;" data-toggle="modal" onclick="openModal()">Đăng ký</button></li>
                     @endif
                 </ul>
             </div>
@@ -141,7 +148,7 @@
                 </section>
                 <ul class="nav">
                     <li class="category" id="hot"><a href="{{asset('hot')}}" class="label selected"><i class="fa fa-fire" style="color: red"></i>Đang hot</a></li>
-                    <li ><a href="{{asset('hot')}}" class="label selected"  style="background-color: white;"><i class="fas fa-bolt" style="color: #41cdf4"></i>Mới</a></li>
+                    <li class="category"><a href="{{asset('new')}}" id="new" class="label selected"  style="background-color: white;"><i class="fas fa-bolt" style="color: #41cdf4"></i>Mới</a></li>
 
                     
                 </ul>
@@ -176,8 +183,15 @@
                 @yield('content')
                 
             </div>
+            <div class="col-lg-3">
+                <div class="top-user-table">
+                    <h3>Chúng tôi trên <i class="fab fa-facebook"></i></h3>
+                    <div class="fb-page" data-href="https://www.facebook.com/Vietgag-984725918355772/?modal=admin_todo_tour" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Vietgag-984725918355772/?modal=admin_todo_tour" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Vietgag-984725918355772/?modal=admin_todo_tour">Vietgag</a></blockquote></div>
+                </div>
+            </div>
         </div>
     </div>
+
      <div class="modal" id="myModal">
       <div class="modal-dialog modal-md" style="width: 541px;border-radius: 0px;">
         <div class="modal-content">
@@ -259,6 +273,10 @@
                 }
                 
             })
+        }
+
+        function openModal(){
+            $('#myModal').modal('show');
         }
 
         function goNext(){

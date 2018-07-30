@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
+            
         ],
     ];
 
@@ -26,7 +27,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
+        Event::listen('posts.view', 'App\Events\ViewPostHandler');
         //
     }
 }

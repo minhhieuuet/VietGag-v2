@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;   
 use Illuminate\Http\Request;
 use App\comment;
 use App\User;
+use App\post;
 use App\Notifications\UserNotification;
 class commentController extends Controller
 {
@@ -49,7 +50,15 @@ class commentController extends Controller
         $comment->UserId=$request->UserId;
         $comment->PostId=$request->PostId;
         $comment->save();
-        return redirect()->back();
+
+        $authorId=post::findorFail($request->PostId)->author['id'];
+        $userName=User::find($request->UserId)->name;
+        if(Auth::user()->id!=$authorId){
+            User::find($authorId)->notify(new UserNotification($userName.' vừa bình luận bài viết "'.post::findorFail($request->PostId)->title.'"'));
+        }
+        
+         return redirect()->back();
+        
     }
 
     /**

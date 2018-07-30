@@ -1,5 +1,8 @@
 @extends('layout.parent')
 @section('content')
+@section('page-title')
+    Tìm kiếm
+@endsection
 @foreach($posts as $post)
                 <div class="panel panel-default" >
                     <div class="panel-body">

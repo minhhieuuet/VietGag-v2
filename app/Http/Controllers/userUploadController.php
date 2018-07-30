@@ -40,7 +40,7 @@ class userUploadController extends Controller
         $request->validate([
             'title'=>'required|min:3|max:50',
             'g-recaptcha-response'=>'required',
-            'imgInput'=>'required|mimes:jpg,jpeg,png'
+            'imgInput'=>'required|mimes:jpg,jpeg,png,gif'
         ],[
             'g-recaptcha-response.required'=>'Bạn chưa xác nhận captcha',
             'title.required'=>'Bạn chưa nhập tiêu đề',

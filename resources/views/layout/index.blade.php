@@ -1,18 +1,30 @@
 @extends('layout.parent')
+@section('page-title')
+     Vietgag
+@endsection
 @section('content')
 @foreach($posts as $post)
                 <div class="panel panel-default" >
                     <div class="panel-body">
                         <div class="page-header">
                             <h3><a href="{{asset('/post/'.$post['id'])}}" target="_blank"><strong>{{$post['title']}}</strong></a></h3>
-                            <p><small> Trong  <a style="color: #e23672;" target="_blank" href="{{asset('/category/'.$post->category['id'])}}">{{$post->category['name']}}</a></small></p>
+                            {{-- Category,Author --}}
+                            <p>
+                                <small> Trong  <a style="color: #e23672;" target="_blank" href="{{asset('/category/'.$post->category['id'])}}">{{$post->category['name']}}</a>
+                                </small>
+                                -
+                                <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
+                                </small>
+                            </p>
+                            {{-- Content --}}
+                            <p></p>
                             <div class="crop" style="margin-bottom: 10px;">
                             <a  href="{{asset('/post/'.$post['id'])}}" target="_blank">
                             <img class="gagimage" data-src="{{$post['src']}}" width="100%">
                             </a>
                             </div>
                             <!-- Info comment, seen -->
-                            <div style="color: #999;">{{$post->comments->count()}} bình luận  100 lượt xem</div>
+                            <div style="color: #999;">{{$post->comments->count()}} bình luận - {{ Counter::show($post['id']) }} lượt xem</div>
                             <div></div>
 
                             <!-- Upvore down vote -->
