@@ -16,7 +16,9 @@
                                 -
                  <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
                 </small>
-
+                <small>
+                {{$post->getTimeAgo(Carbon::parse($post->created_at))}}
+                </small>
                 
 			</p>
 			<div>

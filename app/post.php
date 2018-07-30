@@ -15,8 +15,17 @@ class post extends Model
     	return $this->hasMany('App\comment','PostId','id');
     }
 
-    function author(){
+    public function author(){
     	return $this->belongsTo('App\User','AuthorId','id');
     }
+
+
+    public function getTimeAgo($carbonObject) {
+        return str_ireplace(
+            [' seconds', ' second', ' minutes', ' minute', ' hours', ' hour', ' days', ' day', ' weeks', ' week'], 
+            ['s', 's', 'm', 'm', 'h', 'h', 'd', 'd', 'w', 'w'], 
+            $carbonObject->diffForHumans(null, true)." trước"
+        );
+    } 
     
 }

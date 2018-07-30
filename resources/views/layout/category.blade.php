@@ -14,6 +14,9 @@
                                 -
                                 <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
                                 </small>
+                                <small>
+                                    {{$post->getTimeAgo(Carbon::parse($post->created_at))}}
+                                </small>
                             </p>
                             <div class="crop" style="margin-bottom: 10px;">
                             <a href="{{asset('/post/'.$post['id'])}}" target="_blank">

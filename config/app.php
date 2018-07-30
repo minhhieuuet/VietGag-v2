@@ -219,6 +219,7 @@ Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,  
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
+        'Carbon' => 'Carbon\Carbon',
     ],
 
 ];
