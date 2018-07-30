@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('adminlayout/img/favicon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('adminlayout/img/favicon.png')}}">
+  
+  <link rel="icon" type="image/png" href="{{asset('logo.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Vietgag-Admin  
@@ -88,8 +88,8 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="width: 300px;padding: 5px;">
                   {{-- Read notification --}}
                   @if(Auth::user()->unreadnotifications->count()!=0)
-                  <div class="dropdown-divider"></div>
-                    <b style="font-size: 15px;">MỚI</b>
+                  
+                    <b class="text-devider">MỚI</b>
                   <div class="dropdown-divider"></div>
                   @endif
 
@@ -97,8 +97,7 @@
                   <div class="noti-item"  >{{$notification->data['data']}}</div>
                   @endforeach
                   {{-- Unread notification --}}
-                  <div class="dropdown-divider"></div>
-                    <b style="font-size: 15px;">TRƯỚC ĐÓ</b>
+                  
                   <div class="dropdown-divider"></div>
                   @foreach(Auth::user()->readnotifications->take(5) as $notification)
                   <div class="noti-item"  >{{$notification->data['data']}}</div>

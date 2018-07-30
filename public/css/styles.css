@@ -1114,3 +1114,16 @@ input[type="button"].btn-block {
   margin-top: 10px;
   border-radius: 60px;
 }
+.notification-box{
+  width: 300px;
+  padding: 3px;
+}
+.notification-box li p{
+  width: 100%;
+  background-color: white;
+  display: block;
+}
+.dropdown-menu>li>a {
+    word-wrap: break-word;
+    white-space: normal;
+}

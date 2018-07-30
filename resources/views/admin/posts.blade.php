@@ -128,7 +128,7 @@
                             <img class="elevateImg" src="{{asset($post['src'])}}" alt="{{$post['title']}}" data-zoom-image="{{asset($post['src'])}}" width="200px" height="250px">
                           </td>
                           <td>
-                             {{$post['author']}}
+                             {{$post->author['name']}}
                           </td>
                           <td >
                             {{$post->category['name']}}

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userpost;
 use App\post;
+use App\User;
+use App\Notifications\UserNotification;
 class approveController extends Controller
 {
     /**
@@ -99,8 +101,11 @@ class approveController extends Controller
         $name=$userpost->title;
         $post->src=$userpost->src;
         $post->idCategory=$userpost->idCategory;
-        $post->author=$userpost->author['name'];
+        $post->AuthorId=$userpost->author['id'];
         $post->save();
+        // Thong bao cho nguoi dung bai dang da duoc duyet
+        
+        User::find($userpost->author['id'])->notify(new UserNotification("Bài đăng ' ".$name." ' của bạn đã được duyệt!"));
         return redirect()->back()->with('alert','Đã duyệt bài viết '.$name);
     }
    

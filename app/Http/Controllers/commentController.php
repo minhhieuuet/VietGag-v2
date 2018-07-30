@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\comment;
+use App\User;
+use App\Notifications\UserNotification;
 class commentController extends Controller
 {
     /**

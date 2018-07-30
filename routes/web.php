@@ -38,7 +38,10 @@
 
 	// ajax
 	Route::post('checkemail','homeController@emailCheck');
-	
+	// User notification
+		Route::get('markAsReadNotification',function(){
+			Auth::user()->unreadNotifications->markAsRead();
+		});
 // Admin
 Route::get('admin/login','adminLoginController@index');
 Route::post('admin/login','adminLoginController@authLogin');	

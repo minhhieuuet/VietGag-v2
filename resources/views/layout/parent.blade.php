@@ -15,6 +15,7 @@
     <link rel="icon" href="/logo.png" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/9gag.js')}}"></script>
     <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
@@ -38,7 +39,10 @@
 	    });
         
 		})
-
+        function markReadNoti(){
+            $.get(window.location.origin+'/markAsReadNotification');
+            $('#unread-noti-count').html(0);
+        }
 		
 	</script>
     <!-- Navbar -->
@@ -60,25 +64,44 @@
             <a href="{{asset('')}}" id="logo" class="navbar-brand" style="font-size: 30px;color: white;font-family: 'Knewave', cursive;
 ">Vietgag</a>
             
-            <button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            
             
             <div class="collapse navbar-collapse navHeaderCollapse">
                 <ul class="nav navbar-nav navbar-right">
+                    {{-- Search --}}
                     <li>
                         <a id='searchIcon'> <i class="fa fa-search"></i></a>
                         <form method="GET" action="{{asset('search')}}">
                         <input id='searchText' style="display:none;position:absolute;margin-left: -30px;width: 150px; box-shadow: 0px 2px 2px 0px #ccc;" type="text" name="query" placeholder="Tìm kiếm...">
                         </form>
                     </li>
+                    {{-- Homepage --}}
                     <li><a href="{{asset('')}}">Trang chủ</a></li>
                     @if(Auth::check())
 
                     <li ><a style="background-color: #09f;color: white;font-weight: " href="{{asset('upload')}}"><i class="fa fa-plus"></i> Đăng ảnh</a></li>
-                    <li><a style="color: white;" href=""><i class="fas fa-bell"></i></a></li>
+                    {{-- Notification --}}
+                    {{-- <li><a style="color: white;" href=""><i class="fas fa-bell"></i></a></li> --}}
+                    <li class="dropdown" onclick="markReadNoti()">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i style="font-size: 20px;" class="fa fa-bell"></i>
+                        @if(Auth::user()->unreadnotifications->count()>0)
+                        <badge style="color: red;font-weight: bold;"><b id="unread-noti-count">{{Auth::user()->unreadnotifications->count()}}</b></badge>
+                        @endif
+
+                        <ul class="dropdown-menu notification-box" >
+                            @if(Auth::user()->unreadnotifications->count()==0)
+                            <li><a style="color: red;">Chưa có thông báo mới nào!</a></li>
+                            @endif
+                        @foreach(Auth::user()->unreadnotifications as $noti)
+                          <li><a >{{$noti->data['data']}}</a></li>
+                        @endforeach
+                          <hr>
+                        @foreach(Auth::user()->readnotifications->take(5) as $noti)
+                          <li><a >{{$noti->data['data']}}</a></li>
+                        @endforeach 
+                        </ul>
+                    </li>
+                    {{--  --}}
                     @if(Auth::user()->role==1)
                     <li><a href="{{asset('admin')}}" target="_blank">Trang quản trị</a></li>
                     @endif
@@ -212,6 +235,7 @@
       </div>
     </div>
     <script >
+        
         $('#loadmoreBtn').click(function(){
             $(this).parent().html("<img src='https://steemitimages.com/DQmTWvU8mjzBQA7U1mvWWcCUhQVcBCoj4Hvikd3tihoRzJQ/loading-animation2.gif' width='70px' height='70px' >");
                 if(window.location.href.split("?page=")[1]==undefined){
@@ -252,6 +276,7 @@
 
         
     </script>
+
 </body>
 
 </html>
