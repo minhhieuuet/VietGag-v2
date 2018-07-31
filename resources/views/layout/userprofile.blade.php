@@ -1,8 +1,23 @@
 @extends('layout.parent')
 @section('page-title')
-     Vietgag
+	{{$user['name']}} - Vietgag	
 @endsection
 @section('content')
+<div class="profile">
+	<section class="profile-header">
+		<div class="img-container round"><img src="{{asset($user['avatar'])}}" alt="Profile Pic"></div>
+	</section>
+	<header>
+		<h2>{{$user['name']}}</h2>
+		<p>" hihi i am admin "</p>
+	</header>
+	<div class="clearfix"></div>
+</div>
+<div class="tabbar">
+	<div class="tab-bar-title">
+		<i class="far fa-paper-plane"></i> BÀI ĐĂNG
+	</div>
+</div>
 @foreach($posts as $post)
                 <div class="panel panel-default" >
                     <div class="panel-body">
@@ -13,7 +28,7 @@
                                 <small> Trong  <a style="color: #e23672;" target="_blank" href="{{asset('/category/'.$post->category['id'])}}">{{$post->category['name']}}</a>
                                 </small>
                                 -
-                                <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="{{asset('profile/'.$post->author['id'])}}">{{$post->author['name']}}</a>
+                                <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
                                 </small>
                                 
                                 <small>
@@ -42,9 +57,6 @@
                 </div>
                 @endforeach
                 <center>
-                <section>
-                        <button id="loadmoreBtn" type="button">Xem thêm</button>
-                </section>
+                	{{$posts->links()}}
                 </center>
-
 @endsection

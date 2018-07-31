@@ -23,7 +23,7 @@ class post extends Model
     public function getTimeAgo($carbonObject) {
         return str_ireplace(
             [' seconds', ' second', ' minutes', ' minute', ' hours', ' hour', ' days', ' day', ' weeks', ' week'], 
-            ['s', 's', 'm', 'm', 'h', 'h', 'd', 'd', 'w', 'w'], 
+            [' giây', ' giây', ' phút', ' phút', ' giờ', ' giờ', ' ngày', ' ngày', ' tuần', ' tuần'], 
             $carbonObject->diffForHumans(null, true)." trước"
         );
     } 

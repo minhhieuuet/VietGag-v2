@@ -33,6 +33,8 @@
 	Route::get('logout','HomeController@logout')->name('userLogout');
 	// User Upload 
 	Route::resource('upload','userUploadController')->middleware('auth');
+	// User profile
+	Route::get('profile/{id}','homeController@userprofile');
 	//Comment
 	Route::resource('comment','commentController');
 	//Api

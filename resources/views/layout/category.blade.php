@@ -12,7 +12,7 @@
                                 <small> Trong  <a style="color: #e23672;" target="_blank" href="{{asset('/category/'.$post->category['id'])}}">{{$post->category['name']}}</a>
                                 </small>
                                 -
-                                <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="">{{$post->author['name']}}</a>
+                                <small> Đăng bởi <a style="color: #e23672;" target="_blank" href="{{asset('profile/'.$post->author['id'])}}">{{$post->author['name']}}</a>
                                 </small>
                                 <small>
                                     {{$post->getTimeAgo(Carbon::parse($post->created_at))}}

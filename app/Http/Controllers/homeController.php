@@ -76,4 +76,10 @@ class homeController extends Controller
         $user->save();
         return redirect()->back()->with('alert','Đăng ký thành công');      
     }
+    // Profile
+    function userprofile($id){
+        $user=User::findorFail($id);
+        $posts=post::where('AuthorId',$id)->orderBy('id','DESC')->paginate(10);
+        return view('layout.userprofile',compact('user','posts'));
+    }
 }
