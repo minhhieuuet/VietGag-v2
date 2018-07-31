@@ -104,8 +104,9 @@ class approveController extends Controller
         $post->AuthorId=$userpost->author['id'];
         $post->save();
         // Thong bao cho nguoi dung bai dang da duoc duyet
-        
-        User::find($userpost->author['id'])->notify(new UserNotification("Bài đăng ' ".$name." ' của bạn đã được duyệt!"));
+        // json notification and post 's link
+        $json=array('content'=>"Bài đăng '<b> ".$name."</b> ' của bạn đã được duyệt!",'href'=>'post/'.$post->id);
+        User::find($userpost->author['id'])->notify(new UserNotification(json_encode($json)));
         return redirect()->back()->with('alert','Đã duyệt bài viết '.$name);
     }
    

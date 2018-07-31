@@ -129,7 +129,7 @@
        			<div class="info">
        				<p><a href="#" target="_blank" class="username">{{$comment->user['name']}}</a>
        					<!---->
-       					<!----><span class="meta"><!----> <span><span class="points">{{$comment->created_at}}</span> <span> · </span></span>
+       					<!----><span class="meta"><!----> <span><span class="points">{{$post->getTimeAgo(Carbon::parse($comment->created_at))}}</span> <span> · </span></span>
        				</p>
        			</div>
        			<div class="content">{{$comment['content']}}</div>

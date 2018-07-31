@@ -54,7 +54,10 @@ class commentController extends Controller
         $authorId=post::findorFail($request->PostId)->author['id'];
         $userName=User::find($request->UserId)->name;
         if(Auth::user()->id!=$authorId){
-            User::find($authorId)->notify(new UserNotification($userName.' vừa bình luận bài viết "'.post::findorFail($request->PostId)->title.'"'));
+            // Make json agrument
+            $json=array('href'=>"post/".$request->PostId,'content'=>$userName.' vừa bình luận bài viết "'.post::findorFail($request->PostId)->title.'" của bạn');
+            
+            User::find($authorId)->notify(new UserNotification(json_encode($json)));
         }
         
          return redirect()->back();

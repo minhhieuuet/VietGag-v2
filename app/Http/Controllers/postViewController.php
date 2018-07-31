@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\category;
 use App\post;
 use App\comment;
+use Counter;
 use Illuminate\Http\Request;
 use App\Events\Event;
 class postViewController extends Controller
@@ -11,9 +12,11 @@ class postViewController extends Controller
     function index($id){
     	$categories=category::all();
     	$post=post::findOrFail($id);
+        $post->view=Counter::show($post['id']);
+        $post->save();
+
     	$comments=comment::where('PostId',$id)->orderBy('id','DESC')->get();
 
-        $post->increment('view');
 
     	return view('layout.post',compact('categories','post','comments'));
     }

@@ -12,12 +12,24 @@
         </ul>
     </div>
     @endif
+
     @if(session('error'))
     <div class="alert alert-danger">
             {{session('error')}}    
         
     </div>
     @endif
+                @if(session('alert'))
+                <div class="container-fluid">
+                <div class="alert alert-success text-center"" style="width: 100%;">
+                  <img src="{{asset('tick.png')}}" width="50px" height="50px" alt="">  {{session('alert')}} 
+                </div>
+                </div>
+                <script>
+                  setTimeout(()=>{$('.alert-success').slideUp();},3000);
+                  
+                </script>
+                @endif
 	
         <form method="POST" action="{{route('loginPost')}}">
             @csrf

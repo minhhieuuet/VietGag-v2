@@ -14,31 +14,26 @@
     </div>
     @endif
 	<div id="registerForm">
-                @if(session('alert'))
-                <div class="container-fluid">
-                <div class="alert alert-success text-center"" style="width: 100%;">
-                  <img src="{{asset('tick.png')}}" width="50px" height="50px" alt="">  {{session('alert')}} 
-                </div>
-                </div>
-                <script>
-                  setTimeout(()=>{$('.alert-success').slideUp();},3000);
-                  
-                </script>
-                @endif
+                
+                
                 <h1><b>Trở thành thành viên!</b></h1>
                 <form method="POST" action="{{route('register')}}">
                 @csrf
                 <div class="form-group">
                     <label>Tên đầy đủ</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Tên hoặc biệt danh">
                 </div>
                 <div class="form-group" >
                     <label>Email</label><div id="inputEmail"></div>
-                    <input type="email" class="form-control" name="email" id="email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email của bạn">
                 </div>
                 <div class="form-group">
                     <label>Mật khẩu</label>
-                    <input type="password" class="form-control" name="pass">
+                    <input type="password" class="form-control" name="pass" placeholder="Nhập mật khẩu">
+                </div>
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu</label>
+                    <input type="password" class="form-control" name="repass" placeholder="Nhập lại mật khẩu">
                 </div>
                <div class="g-recaptcha" 
                            data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">

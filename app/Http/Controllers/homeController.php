@@ -8,15 +8,20 @@ use App\category;
 use App\User;
 class homeController extends Controller
 {
+    // Post,register,login,logout for user
+
+    // Hot post
     function index(){
-        $posts=post::orderBy('id',"DESC")->paginate(15);
+        $posts=post::orderBy('view','DESC')->orderBy('id',"DESC")->paginate(15);
         
         return view('layout.index',compact('posts'));
     }
+    // New post
     function new(){
         $posts=post::orderBy('id',"DESC")->paginate(15);
         return view('layout.index',compact('posts'));
     }
+    // Post by category
     function category($id){
         $category=category::findOrFail($id);
         
@@ -59,6 +64,7 @@ class homeController extends Controller
             'name'=>'required|min:4',
             'email'=>'required|unique:users',
             'pass'=>'required|min:8|max:100',
+            'repass'=>'required|min:8|max:100|same:pass',
             'g-recaptcha-response'=>'required'
         ],[
             'name.required'=>'Bạn chưa nhập tên',
@@ -67,6 +73,7 @@ class homeController extends Controller
             'email.unique'=>'Email đã tồn tại',
             'pass.required'=>'Bạn chưa nhập mật khẩu',
             'pass.min'=>'Mật khẩu phải cố dộ dài ít nhất 8 ký tự',
+            'repass.same'=>'Nhập lại mật khẩu không khớp',
             'g-recaptcha-response.required'=>'Bạn chưa xác nhận captcha'
         ]);
         $user=new User();
@@ -74,7 +81,7 @@ class homeController extends Controller
         $user->email=$request->email;
         $user->password=Hash::make($request->pass);
         $user->save();
-        return redirect()->back()->with('alert','Đăng ký thành công');      
+        return redirect('user/login')->with('alert','Đăng ký thành viên thành công!');      
     }
     // Profile
     function userprofile($id){

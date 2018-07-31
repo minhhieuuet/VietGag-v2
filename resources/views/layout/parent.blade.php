@@ -98,11 +98,11 @@
                             <li><a style="color: red;">Chưa có thông báo mới nào!</a></li>
                             @endif
                         @foreach(Auth::user()->unreadnotifications as $noti)
-                          <li><a>{{$noti->data['data']}}</a></li>
+                          <li><a href="{{asset($noti->data['href'])}}" target="_blank" >{!!$noti->data['content']!!}</a></li>
                         @endforeach
                           <hr>
                         @foreach(Auth::user()->readnotifications->take(5) as $noti)
-                          <li><a >{{$noti->data['data']}}</a></li>
+                          <li><a href="{{asset($noti->data['href'])}}" target="_blank" >{!!$noti->data['content']!!}</a></li>
                         @endforeach 
                         </ul>
                     </li>

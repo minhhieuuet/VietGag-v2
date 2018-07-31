@@ -16,9 +16,11 @@ class UserNotification extends Notification
      *
      * @return void
      */
-    public function __construct($mess)
+    public function __construct($json)
     {
-        $this->messenger=$mess;
+        $json=json_decode($json);
+        $this->content=$json->content;
+        $this->href=$json->href;
     }
 
     /**
@@ -55,7 +57,8 @@ class UserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data'=>$this->messenger
+            'content'=>$this->content,
+            'href'=>$this->href
         ];
     }
 }

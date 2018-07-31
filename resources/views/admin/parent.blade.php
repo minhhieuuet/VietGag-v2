@@ -94,13 +94,13 @@
                   @endif
 
                   @foreach(Auth::user()->unreadnotifications as $notification)
-                  <div class="noti-item"  >{{$notification->data['data']}}</div>
+                  <div class="noti-item"><a href="{{asset($notification->data['href'])}}">{{$notification->data['content']}}</a></div>
                   @endforeach
                   {{-- Unread notification --}}
                   
                   <div class="dropdown-divider"></div>
                   @foreach(Auth::user()->readnotifications->take(5) as $notification)
-                  <div class="noti-item"  >{{$notification->data['data']}}</div>
+                  <div class="noti-item"  ><a href="{{asset($notification->data['href'])}}">{{$notification->data['content']}}</a></div>
                   @endforeach
                 </div>
               </li>

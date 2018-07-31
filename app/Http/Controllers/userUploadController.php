@@ -70,7 +70,9 @@ class userUploadController extends Controller
         $post->UserId=$request->UserId;
         $post->save();
         // Notification to admin
-        User::find(1)->notify(new UserNotification(User::find($request->UserId)->name.' vừa đăng bài "'.$request->title.'"'));
+        $json=array('content'=>User::find($request->UserId)->name.' vừa đăng bài "<b>'.$request->title.'</b>"','href'=>"admin/approve");
+        
+        User::find(1)->notify(new UserNotification(json_encode($json)));
 
         return redirect()->back()->with('success','Đăng bài thành công! Bài đăng của bạn đang được kiểm duyệt!');
     }
