@@ -55,26 +55,46 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <!-- <div class="container-fluid" id="alertSuccess">
         Thành công
         </div> -->
         <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
+          </button>
             <a href="{{asset('')}}" id="logo" class="navbar-brand" style="font-size: 30px;color: white;font-family: 'Knewave', cursive;
 ">Vietgag</a>
+            </div>
             
             
-            
-            <div class="collapse navbar-collapse navHeaderCollapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div class="collapse navbar-collapse navHeaderCollapse"  id="myNavbar">
+                <ul class="nav navbar-nav vision-sm vision-xs hidden-lg hidden-md">
+                    <li><a href="{{asset('register')}}"><i class="fas fa-user-edit"></i>
+
+ Đăng ký</a></li>
+                    <li><a href="{{asset('user/login')}}"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                    <hr>
+                    <li><a href="{{asset('hot')}}"><i class="fas fa-fire" style="color: red"></i> Đang hot</a></li>
+                    <li> <a href="{{asset('new')}}"><i class="fas fa-bolt" style="color: yellow;"></i> Mới</a></li>
+                    @foreach($categories as $category )
+                    <li><a href="{{asset('category/'.$category['id'])}}"><i class="{{$category['icon']}}"></i> {{$category['name']}}</a></li>
+                    @endforeach
+                    <p>Vietgag</p>
+                </ul>
+                <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm" >
                     {{-- Search --}}
-                    <li>
+                    <li >
                         <a id='searchIcon'> <i class="fa fa-search"></i></a>
                         <form method="GET" action="{{asset('search')}}">
                         <input id='searchText' style="display:none;position:absolute;margin-left: -30px;width: 150px; box-shadow: 0px 2px 2px 0px #ccc;" type="text" name="query" placeholder="Tìm kiếm...">
                         </form>
                     </li>
+                    
                     {{-- Homepage --}}
                     <li><a href="{{asset('')}}">Trang chủ</a></li>
                     @if(Auth::check())
@@ -124,7 +144,7 @@
                     <li><button class="btn btn-info" style="margin-top: 7px;background-color: red;font-weight: bold;color: white;"><a title="Đăng xuất" href="{{route('userLogout')}}" style="color: white;"><i class="fas fa-power-off"></i></a></button></li>
                     
                     @else
-                    <li><button class="btn btn-info" style="margin-top: 7px;background-color: #09f;font-weight: bold;" data-toggle="modal" onclick="openModal()">Đăng ký</button></li>
+                    <li class="hidden-xs hidden-sm"><button class="btn btn-info" style="margin-top: 7px;background-color: #09f;font-weight: bold;" data-toggle="modal" onclick="openModal()">Đăng ký</button></li>
                     @endif
                 </ul>
             </div>
@@ -132,14 +152,16 @@
             
         </div>
     </div>
-    
+      
+    </div>
     <!-- Posts -->
 
+  
     <div class="container" ng-app>
         
         <div class="row">
             <div class="col-lg-2 ">
-            <div class="section-sidebar">
+            <div class="hidden-sm hidden-xs section-sidebar">
             <div class="stealthy-scroll-container">
                 <section>
                     <header>
