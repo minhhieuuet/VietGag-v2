@@ -61,10 +61,8 @@
         </div> -->
         <div class="container">
             <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"  >
+            <i style="color: white;font-size: 20px;" class='fas fa-bars'></i>
 
           </button>
             <a href="{{asset('')}}" id="logo" class="navbar-brand" style="font-size: 30px;color: white;font-family: 'Knewave', cursive;
@@ -314,6 +312,7 @@
             });
         }
 
+        
         
     </script>
 

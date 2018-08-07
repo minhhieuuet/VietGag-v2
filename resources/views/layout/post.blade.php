@@ -35,16 +35,21 @@
 			<img class="gagimage" width="100%" src="{{asset($post['src'])}}" style="">
 		</div>
 		<div class="share">
-			<ul>
+			<ul class="hidden-sm hidden-xs">
 				<li style="background-color: #36528c;margin-right: 10px;"><i class="fab fa-facebook-f"><a style="color: white;" href="javascript:" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + window.location);" target="_blank"></i> Chia sẻ trên Facebook</a></li>
 				<li style="background-color: #ad071a;"><i class="fab fa-pinterest"></i> Chia sẻ trên Pinterest</li>
+
+			</ul>
+			<ul class="vision-sm vision-xs hidden-lg hidden-md">
+				<li style="background-color: #36528c;margin-right: 10px;"><i class="fab fa-facebook-f"><a style="color: white;" href="javascript:" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + window.location);" target="_blank"></i> Facebook</a></li>
+				<li style="background-color: #ad071a;"><i class="fab fa-pinterest"></i> Pinterest</li>
 
 			</ul>
 		</div>
 
 	</div>
 
-	<div class="CS3">
+	<div class="hidden-sm hidden-xs CS3">
 
 		<div class="tab-bar clearfix">
 
@@ -53,13 +58,30 @@
 			</div>
 			<div class="tab-bar-right">
 				<ul class="tab">
-					<li class="active"><a href="#">Bình luận</a></li>
+					<li id="normal-tab" class="active"><a >Bình luận</a></li>
+					<li id="facebook-tab"><a ">Bình luận Facebook</a></li>
 				<!-- 	<li class=""><a href="#">Fresh</a></li> -->
 				</ul>
 
 			</div>
+			{{-- Tab script --}}
+			<script>
+				$('#normal-tab').click(function(){
+					$('#comment-embed').show();
+					$('#fb-comments').hide();
+					$('#normal-tab').addClass('active');
+					$('#facebook-tab').removeClass('active');
+				});
+				$('#facebook-tab').click(function(){
+					$('#comment-embed').hide();
+					$('#fb-comments').show();
+					$('#facebook-tab').addClass('active');
+					$('#normal-tab').removeClass('active');
+				});
+			</script>
+
 		</div>
-		<div class="comment-embed">
+		<div id="comment-embed" class="comment-embed">
 			<!---->
 			<div>
 				<!---->
@@ -166,6 +188,9 @@
        <!---->
       </div>
      </div>
+    </div>
+    <div style="display: none;" class="vision-sm vision-xs" id="fb-comments">
+    	<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
     </div>
    </div>
    <script>
