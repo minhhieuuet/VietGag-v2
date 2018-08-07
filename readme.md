@@ -10,5 +10,7 @@ Completed
 <img src="https://preview.ibb.co/hAaLMK/Untitled3.png" alt="Untitled3" border="0"><br />
 
 Laravel 5.6
-Web: https://vietgag.tk
+<br>
+Web: <a>https://vietgag.tk</a>
+<br>
 Made by: MinhHieuUet
