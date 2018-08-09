@@ -11,16 +11,34 @@
 |
 */
 	use App\User;
+	use App\post;
 	use App\Notifications\UserNotification;
-
+	// add slug
+	Route::get('slug',function(){
+		$posts=post::orderBy('id','DESC')->get();
+		foreach($posts as $post){
+			if($post->slug==null)
+			{
+				$post->slug=str_slug($post->title,'-');
+				$post->save();
+				echo $post->slug."<br>";
+			}
+			
+		}
+	});
 
 
 	Route::get('/', 'homeController@index');
 	Route::get('hot', 'homeController@index');
 
+
 	Route::get('new', 'homeController@new');
+
 	Route::get('category/{id}','homeController@category');
+	// View post
 	Route::get('post/{id}','postViewController@index');
+	Route::get('post/{slug}/{id}','postViewController@indexSlug');
+	
 	Route::get('prev/{id}','postViewController@getPrev');
 	// Search
 	Route::get('search','searchController@index');	

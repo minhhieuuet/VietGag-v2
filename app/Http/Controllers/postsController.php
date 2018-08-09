@@ -40,6 +40,7 @@ class postsController extends Controller
     {
         $post=new post;
         $post->title=$request->title;
+        $post->slug=str_slug($request->title,'-');
         $post->idCategory=$request->selectCate;
         if($request->hasFile('imgInput1')){
             if($request->file('imgInput1')->isValid()){

@@ -26,6 +26,7 @@ class post extends Model
             [' giây', ' giây', ' phút', ' phút', ' giờ', ' giờ', ' ngày', ' ngày', ' tuần', ' tuần'], 
             $carbonObject->diffForHumans(null, true)." trước"
         );
-    } 
+    }
+   
     
 }

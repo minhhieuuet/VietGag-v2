@@ -98,6 +98,7 @@ class approveController extends Controller
         $post=new post;
 
         $post->title=$userpost->title;
+        $post->slug=str_slug($userpost->title,'-');
         $name=$userpost->title;
         $post->src=$userpost->src;
         $post->idCategory=$userpost->idCategory;
