@@ -13161,3 +13161,16 @@ Copyright (c) 2015 Daniel Eden
 .text-devider{
   color: red;
 }
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: #0CC162;
+}
+.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+    stroke: #BBBBBB;
+}
+.ct-label {
+    font-size: 12px;
+    color: black !important;
+    fill:black !important;
+    font-style: italic;
+    
+}

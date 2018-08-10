@@ -64,6 +64,8 @@
 		Route::get('markAsReadNotification',function(){
 			Auth::user()->unreadNotifications->markAsRead();
 		});
+	//Chart
+	Route::get('chart','ChartsController@index');
 // Admin
 Route::get('admin/login','adminLoginController@index');
 Route::post('admin/login','adminLoginController@authLogin');	

@@ -148,7 +148,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -220,6 +221,7 @@ Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
         'Carbon' => 'Carbon\Carbon',
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];
