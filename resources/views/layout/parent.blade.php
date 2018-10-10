@@ -37,13 +37,13 @@
 	        }
 	    });
 	    });
-        
+
 		})
         function markReadNoti(){
             $.get(window.location.origin+'/markAsReadNotification');
             $('#unread-noti-count').html(0);
         }
-		
+
 	</script>
     <!-- Navbar -->
     <div id="fb-root"></div>
@@ -68,8 +68,8 @@
             <a href="{{asset('')}}" id="logo" class="navbar-brand" style="font-size: 30px;color: white;font-family: 'Knewave', cursive;
 ">Vietgag</a>
             </div>
-            
-            
+
+
             <div class="collapse navbar-collapse navHeaderCollapse"  id="myNavbar">
                 <ul class="nav navbar-nav vision-sm vision-xs hidden-lg hidden-md">
                     <li><a href="{{asset('register')}}"><i class="fas fa-user-edit"></i>
@@ -92,7 +92,7 @@
                         <input id='searchText' style="display:none;position:absolute;margin-left: -30px;width: 150px; box-shadow: 0px 2px 2px 0px #ccc;" type="text" name="query" placeholder="Tìm kiếm...">
                         </form>
                     </li>
-                    
+
                     {{-- Homepage --}}
                     <li><a href="{{asset('')}}">Trang chủ</a></li>
                     @if(Auth::check())
@@ -121,7 +121,7 @@
                           <hr>
                         @foreach(Auth::user()->readnotifications->take(5) as $noti)
                           <li><a href="{{asset($noti->data['href'])}}" target="_blank" >{!!$noti->data['content']!!}</a></li>
-                        @endforeach 
+                        @endforeach
                         </ul>
                     </li>
                     {{--  --}}
@@ -134,29 +134,29 @@
 
                     <li><img id="smallAvatar" src="{{asset(Auth::user()->avatar)}}" alt=""></li>
                     <li><a style="color: white;" href=""> {{Auth::user()->name}}</a></li>
-                    
+
                     @else
                     <li><a href="{{asset('user/login')}}">Đăng nhập</a></li>
                     @endif
                     @if(Auth::check())
                     <li><button class="btn btn-info" style="margin-top: 7px;background-color: red;font-weight: bold;color: white;"><a title="Đăng xuất" href="{{route('userLogout')}}" style="color: white;"><i class="fas fa-power-off"></i></a></button></li>
-                    
+
                     @else
                     <li class="hidden-xs hidden-sm"><button class="btn btn-info" style="margin-top: 7px;background-color: #09f;font-weight: bold;" data-toggle="modal" onclick="openModal()">Đăng ký</button></li>
                     @endif
                 </ul>
             </div>
-           
-            
+
+
         </div>
     </div>
-      
+
     </div>
     <!-- Posts -->
 
-  
+
     <div class="container" ng-app>
-        
+
         <div class="row">
             <div class="col-lg-2 ">
             <div class="hidden-sm hidden-xs section-sidebar">
@@ -170,7 +170,7 @@
                     <li class="category" id="hot"><a href="{{asset('hot')}}" class="label selected"><i class="fa fa-fire" style="color: red"></i>Đang hot</a></li>
                     <li class="category"><a href="{{asset('new')}}" id="new" class="label selected"  style="background-color: white;"><i class="fas fa-bolt" style="color: #41cdf4"></i>Mới</a></li>
 
-                    
+
                 </ul>
                 <section>
                     <header>
@@ -185,23 +185,23 @@
                 <hr>
                 <section class="footer">
                     <p class="static">
-                        <a href="/advertise">Advertise</a> 
-                        <a href="/rules">Rules</a> 
-                        <a href="/tips">Tips</a> 
+                        <a href="/advertise">Advertise</a>
+                        <a href="/rules">Rules</a>
+                        <a href="/tips">Tips</a>
                         <a href="/faq">FAQ</a>
-                         <a href="/tos">Terms</a> 
-                         <a href="/privacy">Privacy</a> 
+                         <a href="/tos">Terms</a>
+                         <a href="/privacy">Privacy</a>
                          <a href="/jobs">Jobs</a>
                           <a href="/contact">Contact</a>
                         </p> <p class="static sortable-consent" style="display: none;"><a href="javascript:void(0);">Manage Consent</a></p> <p class="static">VIETGAG © 2018</p>
                 </section>
-               
+
             </div>
             </div>
             </div>
             <div class="col-lg-7" >
                 @yield('content')
-                
+
             </div>
             <div class="col-lg-3">
                 <div class="top-user-table">
@@ -227,7 +227,7 @@
             <div id="beginBody">
                  <h1><b>Chào bạn!</b></h1>
                 <p style="color:#999">Chào mừng đến với Vietgag! Hãy chia sẻ tất cả những gì ban thấy thú vị và nhận những lới nhận xét từ mọi người trên khắp thế giới.</p>
-               
+
                 <div class="facebook">
                     <table>
                         <tr>
@@ -250,14 +250,14 @@
                 <hr>
                 <br>
             </div>
-           
+
             <div id="loginOption">
               Đăng ký với <a href="{{asset('register')}}">Email của bạn</a>
               <br>
               Bạn đã có tài khoản? <a href="{{asset('user/login')}}">Đăng nhập</a>
             </div>
-                
-            
+
+
           </div>
 
           <!-- Modal footer -->
@@ -269,7 +269,7 @@
       </div>
     </div>
     <script >
-        
+
         $('#loadmoreBtn').click(function(){
             $(this).parent().html("<img src='https://steemitimages.com/DQmTWvU8mjzBQA7U1mvWWcCUhQVcBCoj4Hvikd3tihoRzJQ/loading-animation2.gif' width='70px' height='70px' >");
                 if(window.location.href.split("?page=")[1]==undefined){
@@ -282,7 +282,7 @@
                 }
         })
 
-    
+
         window.onload=function(){
             var list=document.querySelectorAll('.category>a');
             list=[...list];
@@ -291,7 +291,7 @@
                     i.style.borderLeft="5px solid red";
                     i.classList.add('selected');
                 }
-                
+
             })
         }
 
@@ -301,19 +301,19 @@
 
         function goNext(){
             document.getElementById('nextPost').innerHTML+="<img src='http://backgroundcheckall.com/wp-content/uploads/2017/12/ajax-loading-gif-transparent-background-5.gif' width='20px' height='20px'>";
-            
+
             var id=window.location.href.split("post/")[1];
             $.get(window.location.origin+"/prev/"+id,function(data){
                 if(data.id!=undefined)
                 {
-                    window.location=window.location.origin+"/post/"+data.id;    
+                    window.location=window.location.origin+"/post/"+data.id;
                 }
-                
+
             });
         }
 
-        
-        
+
+
     </script>
 
 </body>

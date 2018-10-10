@@ -1,10 +1,7 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
 class CreateUsersTable extends Migration {
-
 	/**
 	 * Run the migrations.
 	 *
@@ -22,11 +19,9 @@ class CreateUsersTable extends Migration {
 			$table->timestamps();
 			$table->integer('role')->nullable()->default(5);
 			$table->string('avatar', 100)->default('avatar/defaultavatar.jpg');
-			$table->boolean('active', 1)->nullable()->default('b\'1\'');
+			$table->boolean('active', 1)->nullable()->default('1');
 		});
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +31,4 @@ class CreateUsersTable extends Migration {
 	{
 		Schema::drop('users');
 	}
-
 }

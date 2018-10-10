@@ -40,7 +40,7 @@ class postsController extends Controller
     {
         $post=new post;
         $post->title=$request->title;
-        $post->slug=str_slug($request->title,'-');
+      
         $post->idCategory=$request->selectCate;
         if($request->hasFile('imgInput1')){
             if($request->file('imgInput1')->isValid()){
@@ -50,10 +50,10 @@ class postsController extends Controller
                 while(file_exists("image/".$Hinh))
                 {
                     $Hinh=str_random(5)."-".$name;
-                    
+
                 }
                 $file->move('image',$Hinh);
-                $post->src="image/".$Hinh;    
+                $post->src="image/".$Hinh;
             }
         }
         else{
@@ -99,7 +99,7 @@ class postsController extends Controller
         $post=post::findOrFail($request->id);
         $post->title=$request->title;
         $post->idCategory=$request->selectCate;
-        
+
          if($request->hasFile('imgInput')){
             if($request->file('imgInput')->isValid()){
                 $file=$request->file('imgInput');
@@ -108,10 +108,10 @@ class postsController extends Controller
                 while(file_exists("image/".$Hinh))
                 {
                     $Hinh=str_random(5)."-".$name;
-                    
+
                 }
                 $file->move('image',$Hinh);
-                $post->src="image/".$Hinh;    
+                $post->src="image/".$Hinh;
             }
         }
         $post->save();
