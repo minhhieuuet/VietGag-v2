@@ -14,12 +14,12 @@
                   <p class="card-category">DANH MỤC</p>
                   <h3 class="card-title">{{$categories->count()}} mục
                     {{-- <small>GB</small> --}}
-                 
+
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    
+
                     <a href="{{asset('admin/table/category')}}">Quản lý danh mục</a>
                   </div>
                 </div>
@@ -49,11 +49,11 @@
                   <div class="card-icon">
                     <a style="color: white;" href="{{asset('admin/approve')}}">
                     <i class="fas fa-check"></i>
-                    </a>  
+                    </a>
                   </div>
                   <p class="card-category">Chờ duyệt</p>
                   <h3 class="card-title">{{$approvePostCount}} bài</h3>
-                  
+
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -74,14 +74,14 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">update</i>{{$newUserCount}} mới trong 7 ngày gần đây! 
+                    <i class="material-icons">update</i>{{$newUserCount}} mới trong 7 ngày gần đây!
                   </div>
                 </div>
               </div>
             </div>
           </div>
           {{-- Chartist php make array --}}
-          <?php 
+          <?php
             function getPercent($number, $sum){
 
               return round(($number / $sum) * 100,4);
@@ -91,7 +91,7 @@
            <?php
                 //Category pie chart
                      $nameCategoryArr=[];
-                     $countCategoryPostArr=[]; 
+                     $countCategoryPostArr=[];
                     foreach ($categories as $category) {
                       array_push($nameCategoryArr, $category['name']);
                       array_push($countCategoryPostArr, $category->post->count());
@@ -99,15 +99,15 @@
 
                 //Last 7 day line chart
                     //Name of last 7 day
-                    $dayNameArr=[]; 
+                    $dayNameArr=[];
                     for($i=0;$i<7;$i++)
                     {
                       $i==0? array_push($dayNameArr,'Today'):array_push($dayNameArr, Carbon::now()->subDays($i)->format('l'));
-                     
+
                     }
                     //Post count of last 7 day
-                    
-                   
+
+
 
           ?>
                    {{--  --}}
@@ -125,8 +125,8 @@
                     width: 300,
                     height: 220,
                     showLabel: true,
-                    
-                    
+
+
                   };
                   // Category pie chart
                   new Chartist.Pie('#pieChart', data,options);
@@ -134,17 +134,17 @@
                  new Chartist.Line('#categoryView', {labels: {!! json_encode(array_reverse($dayNameArr)) !!},series: [{!! json_encode(array_reverse($postCountArr)) !!}]}, {low: 0  ,showArea: true});
 
               }
-                 
+
                 </script>
                 {{--  --}}
           <div class="row">
             {{-- Category chart --}}
             <div class="col-md-4">
               <div class="card card-chart">
-                
+
                   <div class="ct-chart ct-golden-section ct-negative-labels" id="pieChart"></div>
-                  
-               
+
+
                 <div class="card-body">
                   <h4 class="card-title">Bài đăng theo danh mục</h4>
                   <p class="card-category">
@@ -167,21 +167,21 @@
             </div>
             <div class="col-md-8">
               <div class="card card-chart">
-                
+
                   <div class="ct-chart ct-golden-section" id="categoryView"></div>
-               
+
                 <div class="card-body">
                   <h4 class="card-title">Số bài đăng trong 7 ngày gần nhất</h4>
                   <p class="card-category">
-                  
-                  
+
+
                   </p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    
+
                     <i class="material-icons">access_time</i> Số bài đăng 7 ngày gần đây
-                    
+
                   </div>
                 </div>
               </div>
@@ -203,7 +203,7 @@
               </div>
             </div> --}}
           </div>
-          <div class="row">
+          {{-- <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-tabs card-header-primary">
@@ -493,7 +493,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
+			
 @endsection

@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  
+
   <link rel="icon" type="image/png" href="{{asset('logo.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Vietgag-Admin  
+    Vietgag-Admin
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -34,6 +34,11 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
   {{-- Ajax Notification --}}
+  <style>
+    body{
+      overflow-y:auto;
+    }
+  </style>
   <script >
     function ajaxMarkRead(){
       $.get(window.location.origin+'/admin/markAsReadNotification',function(data){
@@ -42,11 +47,12 @@
       $('#notificationCount').html(0);
     }
   </script>
+
 </head>
 
 <body class="">
   <div class="wrapper ">
-   
+
    @include('admin.sidebar')
     <div class="main-panel">
       <!-- Navbar -->
@@ -91,7 +97,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="width: 300px;padding: 5px;">
                   {{-- Read notification --}}
                   @if(Auth::user()->unreadnotifications->count()!=0)
-                  
+
                     <b class="text-devider">MỚI</b>
                   <div class="dropdown-divider"></div>
                   @endif
@@ -100,7 +106,7 @@
                   <div class="noti-item"><a href="{{asset($notification->data['href'])}}">{{$notification->data['content']}}</a></div>
                   @endforeach
                   {{-- Unread notification --}}
-                  
+
                   <div class="dropdown-divider"></div>
                   @foreach(Auth::user()->readnotifications->take(5) as $notification)
                   <div class="noti-item"  ><a href="{{asset($notification->data['href'])}}">{{$notification->data['content']}}</a></div>
@@ -120,7 +126,7 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      
+
       @yield('content')
 
 
@@ -133,7 +139,7 @@
                   Vietgag
                 </a>
               </li>
-              
+
             </ul>
           </nav>
           <div class="copyright float-right">

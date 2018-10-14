@@ -1,4 +1,4 @@
- 
+
  <div class="sidebar" data-color="orange" data-background-color="white" data-image="{{asset('adminlayout/img/sidebar-1.jpg')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -25,7 +25,7 @@
               <p>Thông tin cá nhân</p>
             </a>
           </li>
-          
+
           <li class="nav-item dropdown " id="tableItem" >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
              <i class="material-icons">content_paste</i>
@@ -34,7 +34,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 88%;">
               <a class="dropdown-item" href="{{asset('admin/table/category')}}">Danh mục</a>
               <a class="dropdown-item" href="{{asset('admin/table/post')}}">Bài đăng</a>
-              
+
               <a class="dropdown-item" href="">Bình luận</a>
             </div>
           </li>
@@ -50,12 +50,7 @@
               <p>Quản lý người dùng</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Bản đồ</p>
-            </a>
-          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -78,7 +73,7 @@
     nav=[...nav];
     nav.forEach((i)=>{
       i.classList.remove("active");
-      
+
       if(i.getElementsByTagName('a')[0].href==window.location.href.split("?")[0]){
          i.classList.add("active");
       }
@@ -89,5 +84,5 @@
       {
         document.getElementById('tableItem').classList.add("active");
       }
-      
+
  </script>
